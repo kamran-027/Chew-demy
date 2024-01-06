@@ -44,15 +44,27 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/signin", function (req, res) {
+router.post("/signin", async function (req, res) {
   const usernameResp = userDetailsSchema.safeParse(req.body.username);
   const passwordResp = userDetailsSchema.safeParse(req.body.password);
+
+  const existingAdmin = await Admin.findOne({
+    username: req.body.username,
+    password: req.body.password,
+  });
 
   if (!usernameResp.success && passwordResp.success) {
     return res.status(404).json({
       err: "Check Admin Details Again",
     });
   }
+
+  if (!existingAdmin) {
+    return res.status(404).json({
+      err: "Admin not found",
+    });
+  }
+
   const token = jwt.sign({ username: req.body.username }, process.env.JWTPass);
 
   res.status(200).json({

@@ -1,0 +1,33 @@
+.sign-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  background: #ea906c;
+  padding: 4rem;
+  border: 3px solid black;
+  border-radius: 1rem;
+}
+
+.signin-input {
+  background-color: #eee2de;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 15rem;
+  text-align: center;
+  font-family: "Tektur", sans-serif;
+  font-size: 1.1rem;
+}
+
+.signin-btn {
+  background-color: #2b2a4c;
+  color: aliceblue;
+}
+
+.header-text {
+  font-weight: bolder;
+}
+
+.signup-link {
+  cursor: pointer;
+}
